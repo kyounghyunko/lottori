@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "baseline",
+    "local_app_files_bytes": 26127079,
+    "main_executable_bytes": 75088,
+    "framework_bytes": 26043680
+  },
+  {
+    "mode": "player",
+    "local_app_files_bytes": 27279191,
+    "main_executable_bytes": 75088,
+    "framework_bytes": 27195792
+  },
+  {
+    "mode": "json",
+    "local_app_files_bytes": 27279980,
+    "main_executable_bytes": 75088,
+    "framework_bytes": 27195792
+  },
+  {
+    "mode": "dotlottie",
+    "local_app_files_bytes": 27279757,
+    "main_executable_bytes": 75088,
+    "framework_bytes": 27195792
+  }
+]

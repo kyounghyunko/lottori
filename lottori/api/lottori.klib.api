@@ -1,0 +1,167 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.ycgc.lottori:lottori>
+final enum class com.ycgc.lottori.core/ParseMode : kotlin/Enum<com.ycgc.lottori.core/ParseMode> { // com.ycgc.lottori.core/ParseMode|null[0]
+    enum entry Preview // com.ycgc.lottori.core/ParseMode.Preview|null[0]
+    enum entry Strict // com.ycgc.lottori.core/ParseMode.Strict|null[0]
+
+    final val entries // com.ycgc.lottori.core/ParseMode.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ycgc.lottori.core/ParseMode> // com.ycgc.lottori.core/ParseMode.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ycgc.lottori.core/ParseMode // com.ycgc.lottori.core/ParseMode.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ycgc.lottori.core/ParseMode> // com.ycgc.lottori.core/ParseMode.values|values#static(){}[0]
+}
+
+final enum class com.ycgc.lottori.core/Severity : kotlin/Enum<com.ycgc.lottori.core/Severity> { // com.ycgc.lottori.core/Severity|null[0]
+    enum entry Error // com.ycgc.lottori.core/Severity.Error|null[0]
+    enum entry Warning // com.ycgc.lottori.core/Severity.Warning|null[0]
+
+    final val entries // com.ycgc.lottori.core/Severity.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ycgc.lottori.core/Severity> // com.ycgc.lottori.core/Severity.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ycgc.lottori.core/Severity // com.ycgc.lottori.core/Severity.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ycgc.lottori.core/Severity> // com.ycgc.lottori.core/Severity.values|values#static(){}[0]
+}
+
+sealed interface com.ycgc.lottori/LottoriLoadState { // com.ycgc.lottori/LottoriLoadState|null[0]
+    final class Failed : com.ycgc.lottori/LottoriLoadState { // com.ycgc.lottori/LottoriLoadState.Failed|null[0]
+        constructor <init>(kotlin.collections/List<com.ycgc.lottori.core/Diagnostic>) // com.ycgc.lottori/LottoriLoadState.Failed.<init>|<init>(kotlin.collections.List<com.ycgc.lottori.core.Diagnostic>){}[0]
+
+        final val diagnostics // com.ycgc.lottori/LottoriLoadState.Failed.diagnostics|{}diagnostics[0]
+            final fun <get-diagnostics>(): kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> // com.ycgc.lottori/LottoriLoadState.Failed.diagnostics.<get-diagnostics>|<get-diagnostics>(){}[0]
+
+        final fun component1(): kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> // com.ycgc.lottori/LottoriLoadState.Failed.component1|component1(){}[0]
+        final fun copy(kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> = ...): com.ycgc.lottori/LottoriLoadState.Failed // com.ycgc.lottori/LottoriLoadState.Failed.copy|copy(kotlin.collections.List<com.ycgc.lottori.core.Diagnostic>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.ycgc.lottori/LottoriLoadState.Failed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.ycgc.lottori/LottoriLoadState.Failed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.ycgc.lottori/LottoriLoadState.Failed.toString|toString(){}[0]
+    }
+
+    final class Ready : com.ycgc.lottori/LottoriLoadState { // com.ycgc.lottori/LottoriLoadState.Ready|null[0]
+        constructor <init>(com.ycgc.lottori.core/LottoriComposition, kotlin.collections/List<com.ycgc.lottori.core/Diagnostic>) // com.ycgc.lottori/LottoriLoadState.Ready.<init>|<init>(com.ycgc.lottori.core.LottoriComposition;kotlin.collections.List<com.ycgc.lottori.core.Diagnostic>){}[0]
+
+        final val composition // com.ycgc.lottori/LottoriLoadState.Ready.composition|{}composition[0]
+            final fun <get-composition>(): com.ycgc.lottori.core/LottoriComposition // com.ycgc.lottori/LottoriLoadState.Ready.composition.<get-composition>|<get-composition>(){}[0]
+        final val diagnostics // com.ycgc.lottori/LottoriLoadState.Ready.diagnostics|{}diagnostics[0]
+            final fun <get-diagnostics>(): kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> // com.ycgc.lottori/LottoriLoadState.Ready.diagnostics.<get-diagnostics>|<get-diagnostics>(){}[0]
+
+        final fun component1(): com.ycgc.lottori.core/LottoriComposition // com.ycgc.lottori/LottoriLoadState.Ready.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> // com.ycgc.lottori/LottoriLoadState.Ready.component2|component2(){}[0]
+        final fun copy(com.ycgc.lottori.core/LottoriComposition = ..., kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> = ...): com.ycgc.lottori/LottoriLoadState.Ready // com.ycgc.lottori/LottoriLoadState.Ready.copy|copy(com.ycgc.lottori.core.LottoriComposition;kotlin.collections.List<com.ycgc.lottori.core.Diagnostic>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.ycgc.lottori/LottoriLoadState.Ready.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.ycgc.lottori/LottoriLoadState.Ready.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.ycgc.lottori/LottoriLoadState.Ready.toString|toString(){}[0]
+    }
+
+    final object Loading : com.ycgc.lottori/LottoriLoadState { // com.ycgc.lottori/LottoriLoadState.Loading|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.ycgc.lottori/LottoriLoadState.Loading.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.ycgc.lottori/LottoriLoadState.Loading.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.ycgc.lottori/LottoriLoadState.Loading.toString|toString(){}[0]
+    }
+}
+
+final class com.ycgc.lottori.core/Diagnostic { // com.ycgc.lottori.core/Diagnostic|null[0]
+    constructor <init>(com.ycgc.lottori.core/Severity, kotlin/String, kotlin/String, kotlin/String, kotlin/String? = ...) // com.ycgc.lottori.core/Diagnostic.<init>|<init>(com.ycgc.lottori.core.Severity;kotlin.String;kotlin.String;kotlin.String;kotlin.String?){}[0]
+
+    final val code // com.ycgc.lottori.core/Diagnostic.code|{}code[0]
+        final fun <get-code>(): kotlin/String // com.ycgc.lottori.core/Diagnostic.code.<get-code>|<get-code>(){}[0]
+    final val layerName // com.ycgc.lottori.core/Diagnostic.layerName|{}layerName[0]
+        final fun <get-layerName>(): kotlin/String? // com.ycgc.lottori.core/Diagnostic.layerName.<get-layerName>|<get-layerName>(){}[0]
+    final val message // com.ycgc.lottori.core/Diagnostic.message|{}message[0]
+        final fun <get-message>(): kotlin/String // com.ycgc.lottori.core/Diagnostic.message.<get-message>|<get-message>(){}[0]
+    final val path // com.ycgc.lottori.core/Diagnostic.path|{}path[0]
+        final fun <get-path>(): kotlin/String // com.ycgc.lottori.core/Diagnostic.path.<get-path>|<get-path>(){}[0]
+    final val severity // com.ycgc.lottori.core/Diagnostic.severity|{}severity[0]
+        final fun <get-severity>(): com.ycgc.lottori.core/Severity // com.ycgc.lottori.core/Diagnostic.severity.<get-severity>|<get-severity>(){}[0]
+
+    final fun component1(): com.ycgc.lottori.core/Severity // com.ycgc.lottori.core/Diagnostic.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.ycgc.lottori.core/Diagnostic.component2|component2(){}[0]
+    final fun component3(): kotlin/String // com.ycgc.lottori.core/Diagnostic.component3|component3(){}[0]
+    final fun component4(): kotlin/String // com.ycgc.lottori.core/Diagnostic.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // com.ycgc.lottori.core/Diagnostic.component5|component5(){}[0]
+    final fun copy(com.ycgc.lottori.core/Severity = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String? = ...): com.ycgc.lottori.core/Diagnostic // com.ycgc.lottori.core/Diagnostic.copy|copy(com.ycgc.lottori.core.Severity;kotlin.String;kotlin.String;kotlin.String;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ycgc.lottori.core/Diagnostic.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.ycgc.lottori.core/Diagnostic.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ycgc.lottori.core/Diagnostic.toString|toString(){}[0]
+}
+
+final class com.ycgc.lottori.core/LottoriComposition { // com.ycgc.lottori.core/LottoriComposition|null[0]
+    final val durationSeconds // com.ycgc.lottori.core/LottoriComposition.durationSeconds|{}durationSeconds[0]
+        final fun <get-durationSeconds>(): kotlin/Double // com.ycgc.lottori.core/LottoriComposition.durationSeconds.<get-durationSeconds>|<get-durationSeconds>(){}[0]
+    final val frameRate // com.ycgc.lottori.core/LottoriComposition.frameRate|{}frameRate[0]
+        final fun <get-frameRate>(): kotlin/Double // com.ycgc.lottori.core/LottoriComposition.frameRate.<get-frameRate>|<get-frameRate>(){}[0]
+    final val height // com.ycgc.lottori.core/LottoriComposition.height|{}height[0]
+        final fun <get-height>(): kotlin/Int // com.ycgc.lottori.core/LottoriComposition.height.<get-height>|<get-height>(){}[0]
+    final val inPoint // com.ycgc.lottori.core/LottoriComposition.inPoint|{}inPoint[0]
+        final fun <get-inPoint>(): kotlin/Double // com.ycgc.lottori.core/LottoriComposition.inPoint.<get-inPoint>|<get-inPoint>(){}[0]
+    final val outPoint // com.ycgc.lottori.core/LottoriComposition.outPoint|{}outPoint[0]
+        final fun <get-outPoint>(): kotlin/Double // com.ycgc.lottori.core/LottoriComposition.outPoint.<get-outPoint>|<get-outPoint>(){}[0]
+    final val width // com.ycgc.lottori.core/LottoriComposition.width|{}width[0]
+        final fun <get-width>(): kotlin/Int // com.ycgc.lottori.core/LottoriComposition.width.<get-width>|<get-width>(){}[0]
+
+    final fun frameAtProgress(kotlin/Double): kotlin/Double // com.ycgc.lottori.core/LottoriComposition.frameAtProgress|frameAtProgress(kotlin.Double){}[0]
+}
+
+final class com.ycgc.lottori.core/ParseResult { // com.ycgc.lottori.core/ParseResult|null[0]
+    constructor <init>(com.ycgc.lottori.core/LottoriComposition?, kotlin.collections/List<com.ycgc.lottori.core/Diagnostic>) // com.ycgc.lottori.core/ParseResult.<init>|<init>(com.ycgc.lottori.core.LottoriComposition?;kotlin.collections.List<com.ycgc.lottori.core.Diagnostic>){}[0]
+
+    final val composition // com.ycgc.lottori.core/ParseResult.composition|{}composition[0]
+        final fun <get-composition>(): com.ycgc.lottori.core/LottoriComposition? // com.ycgc.lottori.core/ParseResult.composition.<get-composition>|<get-composition>(){}[0]
+    final val diagnostics // com.ycgc.lottori.core/ParseResult.diagnostics|{}diagnostics[0]
+        final fun <get-diagnostics>(): kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> // com.ycgc.lottori.core/ParseResult.diagnostics.<get-diagnostics>|<get-diagnostics>(){}[0]
+
+    final fun component1(): com.ycgc.lottori.core/LottoriComposition? // com.ycgc.lottori.core/ParseResult.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> // com.ycgc.lottori.core/ParseResult.component2|component2(){}[0]
+    final fun copy(com.ycgc.lottori.core/LottoriComposition? = ..., kotlin.collections/List<com.ycgc.lottori.core/Diagnostic> = ...): com.ycgc.lottori.core/ParseResult // com.ycgc.lottori.core/ParseResult.copy|copy(com.ycgc.lottori.core.LottoriComposition?;kotlin.collections.List<com.ycgc.lottori.core.Diagnostic>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ycgc.lottori.core/ParseResult.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.ycgc.lottori.core/ParseResult.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ycgc.lottori.core/ParseResult.toString|toString(){}[0]
+}
+
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Diagnostic$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Diagnostic$stableprop|#static{}com_ycgc_lottori_core_Diagnostic$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Group$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Group$stableprop|#static{}com_ycgc_lottori_core_GroupPlan_Command_Group$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Style$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Style$stableprop|#static{}com_ycgc_lottori_core_GroupPlan_Command_Style$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_LottoriComposition$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_LottoriComposition$stableprop|#static{}com_ycgc_lottori_core_LottoriComposition$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Fill$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Fill$stableprop|#static{}com_ycgc_lottori_core_Paint_Fill$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Stroke$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Stroke$stableprop|#static{}com_ycgc_lottori_core_Paint_Stroke$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_ParseResult$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_ParseResult$stableprop|#static{}com_ycgc_lottori_core_ParseResult$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Ellipse$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Ellipse$stableprop|#static{}com_ycgc_lottori_core_Shape_Ellipse$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Fill$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Fill$stableprop|#static{}com_ycgc_lottori_core_Shape_Fill$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Group$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Group$stableprop|#static{}com_ycgc_lottori_core_Shape_Group$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Path$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Path$stableprop|#static{}com_ycgc_lottori_core_Shape_Path$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Rect$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Rect$stableprop|#static{}com_ycgc_lottori_core_Shape_Rect$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Stroke$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Stroke$stableprop|#static{}com_ycgc_lottori_core_Shape_Stroke$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Animated$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Animated$stableprop|#static{}com_ycgc_lottori_core_Track_Animated$stableprop[0]
+final val com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Fixed$stableprop // com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Fixed$stableprop|#static{}com_ycgc_lottori_core_Track_Fixed$stableprop[0]
+final val com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Failed$stableprop // com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Failed$stableprop|#static{}com_ycgc_lottori_LottoriLoadState_Failed$stableprop[0]
+final val com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Loading$stableprop // com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Loading$stableprop|#static{}com_ycgc_lottori_LottoriLoadState_Loading$stableprop[0]
+final val com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Ready$stableprop // com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Ready$stableprop|#static{}com_ycgc_lottori_LottoriLoadState_Ready$stableprop[0]
+
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Diagnostic$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Diagnostic$stableprop_getter|com_ycgc_lottori_core_Diagnostic$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Group$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Group$stableprop_getter|com_ycgc_lottori_core_GroupPlan_Command_Group$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Style$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_GroupPlan_Command_Style$stableprop_getter|com_ycgc_lottori_core_GroupPlan_Command_Style$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_LottoriComposition$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_LottoriComposition$stableprop_getter|com_ycgc_lottori_core_LottoriComposition$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Fill$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Fill$stableprop_getter|com_ycgc_lottori_core_Paint_Fill$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Stroke$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Paint_Stroke$stableprop_getter|com_ycgc_lottori_core_Paint_Stroke$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_ParseResult$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_ParseResult$stableprop_getter|com_ycgc_lottori_core_ParseResult$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Ellipse$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Ellipse$stableprop_getter|com_ycgc_lottori_core_Shape_Ellipse$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Fill$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Fill$stableprop_getter|com_ycgc_lottori_core_Shape_Fill$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Group$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Group$stableprop_getter|com_ycgc_lottori_core_Shape_Group$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Path$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Path$stableprop_getter|com_ycgc_lottori_core_Shape_Path$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Rect$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Rect$stableprop_getter|com_ycgc_lottori_core_Shape_Rect$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Stroke$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Shape_Stroke$stableprop_getter|com_ycgc_lottori_core_Shape_Stroke$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Animated$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Animated$stableprop_getter|com_ycgc_lottori_core_Track_Animated$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Fixed$stableprop_getter(): kotlin/Int // com.ycgc.lottori.core/com_ycgc_lottori_core_Track_Fixed$stableprop_getter|com_ycgc_lottori_core_Track_Fixed$stableprop_getter(){}[0]
+final fun com.ycgc.lottori.core/decodeJson(kotlin/ByteArray, com.ycgc.lottori.core/ParseMode = ...): com.ycgc.lottori.core/ParseResult // com.ycgc.lottori.core/decodeJson|decodeJson(kotlin.ByteArray;com.ycgc.lottori.core.ParseMode){}[0]
+final fun com.ycgc.lottori/LottoriAnimation(com.ycgc.lottori.core/LottoriComposition, androidx.compose.ui/Modifier?, kotlin/Boolean, kotlin/Int, kotlin/Float, kotlin/String?, androidx.compose.ui.layout/ContentScale?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.ycgc.lottori/LottoriAnimation|LottoriAnimation(com.ycgc.lottori.core.LottoriComposition;androidx.compose.ui.Modifier?;kotlin.Boolean;kotlin.Int;kotlin.Float;kotlin.String?;androidx.compose.ui.layout.ContentScale?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ycgc.lottori/LottoriAnimation(com.ycgc.lottori.core/LottoriComposition, kotlin/Function0<kotlin/Float>, androidx.compose.ui/Modifier?, kotlin/String?, androidx.compose.ui.layout/ContentScale?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.ycgc.lottori/LottoriAnimation|LottoriAnimation(com.ycgc.lottori.core.LottoriComposition;kotlin.Function0<kotlin.Float>;androidx.compose.ui.Modifier?;kotlin.String?;androidx.compose.ui.layout.ContentScale?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Failed$stableprop_getter(): kotlin/Int // com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Failed$stableprop_getter|com_ycgc_lottori_LottoriLoadState_Failed$stableprop_getter(){}[0]
+final fun com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Loading$stableprop_getter(): kotlin/Int // com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Loading$stableprop_getter|com_ycgc_lottori_LottoriLoadState_Loading$stableprop_getter(){}[0]
+final fun com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Ready$stableprop_getter(): kotlin/Int // com.ycgc.lottori/com_ycgc_lottori_LottoriLoadState_Ready$stableprop_getter|com_ycgc_lottori_LottoriLoadState_Ready$stableprop_getter(){}[0]
+final fun com.ycgc.lottori/rememberLottoriComposition(kotlin/Any?, com.ycgc.lottori.core/ParseMode?, kotlin.coroutines/SuspendFunction0<kotlin/ByteArray>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int): com.ycgc.lottori/LottoriLoadState // com.ycgc.lottori/rememberLottoriComposition|rememberLottoriComposition(kotlin.Any?;com.ycgc.lottori.core.ParseMode?;kotlin.coroutines.SuspendFunction0<kotlin.ByteArray>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ycgc.lottori/rememberLottoriPlayback(com.ycgc.lottori.core/LottoriComposition, kotlin/Int, kotlin/Boolean, kotlin/Float, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int): androidx.compose.runtime/State<kotlin/Float> // com.ycgc.lottori/rememberLottoriPlayback|rememberLottoriPlayback(com.ycgc.lottori.core.LottoriComposition;kotlin.Int;kotlin.Boolean;kotlin.Float;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]

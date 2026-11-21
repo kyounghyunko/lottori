@@ -1,0 +1,117 @@
+public final class com/ycgc/lottori/LottoriAnimationKt {
+	public static final fun LottoriAnimation (Lcom/ycgc/lottori/core/LottoriComposition;Landroidx/compose/ui/Modifier;ZIFLjava/lang/String;Landroidx/compose/ui/layout/ContentScale;Landroidx/compose/runtime/Composer;II)V
+	public static final fun LottoriAnimation (Lcom/ycgc/lottori/core/LottoriComposition;Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;Ljava/lang/String;Landroidx/compose/ui/layout/ContentScale;Landroidx/compose/runtime/Composer;II)V
+}
+
+public abstract interface class com/ycgc/lottori/LottoriLoadState {
+}
+
+public final class com/ycgc/lottori/LottoriLoadState$Failed : com/ycgc/lottori/LottoriLoadState {
+	public static final field $stable I
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/ycgc/lottori/LottoriLoadState$Failed;
+	public static synthetic fun copy$default (Lcom/ycgc/lottori/LottoriLoadState$Failed;Ljava/util/List;ILjava/lang/Object;)Lcom/ycgc/lottori/LottoriLoadState$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDiagnostics ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ycgc/lottori/LottoriLoadState$Loading : com/ycgc/lottori/LottoriLoadState {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/ycgc/lottori/LottoriLoadState$Loading;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ycgc/lottori/LottoriLoadState$Ready : com/ycgc/lottori/LottoriLoadState {
+	public static final field $stable I
+	public fun <init> (Lcom/ycgc/lottori/core/LottoriComposition;Ljava/util/List;)V
+	public final fun component1 ()Lcom/ycgc/lottori/core/LottoriComposition;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Lcom/ycgc/lottori/core/LottoriComposition;Ljava/util/List;)Lcom/ycgc/lottori/LottoriLoadState$Ready;
+	public static synthetic fun copy$default (Lcom/ycgc/lottori/LottoriLoadState$Ready;Lcom/ycgc/lottori/core/LottoriComposition;Ljava/util/List;ILjava/lang/Object;)Lcom/ycgc/lottori/LottoriLoadState$Ready;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComposition ()Lcom/ycgc/lottori/core/LottoriComposition;
+	public final fun getDiagnostics ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ycgc/lottori/LottoriLoadStateKt {
+	public static final fun rememberLottoriComposition (Ljava/lang/Object;Lcom/ycgc/lottori/core/ParseMode;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;II)Lcom/ycgc/lottori/LottoriLoadState;
+}
+
+public final class com/ycgc/lottori/LottoriPlaybackKt {
+	public static final fun rememberLottoriPlayback (Lcom/ycgc/lottori/core/LottoriComposition;IZFLandroidx/compose/runtime/Composer;II)Landroidx/compose/runtime/State;
+}
+
+public final class com/ycgc/lottori/core/Diagnostic {
+	public static final field $stable I
+	public fun <init> (Lcom/ycgc/lottori/core/Severity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Lcom/ycgc/lottori/core/Severity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/ycgc/lottori/core/Severity;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Lcom/ycgc/lottori/core/Severity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/ycgc/lottori/core/Diagnostic;
+	public static synthetic fun copy$default (Lcom/ycgc/lottori/core/Diagnostic;Lcom/ycgc/lottori/core/Severity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/ycgc/lottori/core/Diagnostic;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getLayerName ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getPath ()Ljava/lang/String;
+	public final fun getSeverity ()Lcom/ycgc/lottori/core/Severity;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ycgc/lottori/core/LottoriComposition {
+	public static final field $stable I
+	public final fun frameAtProgress (D)D
+	public final fun getDurationSeconds ()D
+	public final fun getFrameRate ()D
+	public final fun getHeight ()I
+	public final fun getInPoint ()D
+	public final fun getOutPoint ()D
+	public final fun getWidth ()I
+}
+
+public final class com/ycgc/lottori/core/ParseMode : java/lang/Enum {
+	public static final field Preview Lcom/ycgc/lottori/core/ParseMode;
+	public static final field Strict Lcom/ycgc/lottori/core/ParseMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ycgc/lottori/core/ParseMode;
+	public static fun values ()[Lcom/ycgc/lottori/core/ParseMode;
+}
+
+public final class com/ycgc/lottori/core/ParseResult {
+	public static final field $stable I
+	public fun <init> (Lcom/ycgc/lottori/core/LottoriComposition;Ljava/util/List;)V
+	public final fun component1 ()Lcom/ycgc/lottori/core/LottoriComposition;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Lcom/ycgc/lottori/core/LottoriComposition;Ljava/util/List;)Lcom/ycgc/lottori/core/ParseResult;
+	public static synthetic fun copy$default (Lcom/ycgc/lottori/core/ParseResult;Lcom/ycgc/lottori/core/LottoriComposition;Ljava/util/List;ILjava/lang/Object;)Lcom/ycgc/lottori/core/ParseResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComposition ()Lcom/ycgc/lottori/core/LottoriComposition;
+	public final fun getDiagnostics ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ycgc/lottori/core/ParserKt {
+	public static final fun decodeJson ([BLcom/ycgc/lottori/core/ParseMode;)Lcom/ycgc/lottori/core/ParseResult;
+	public static synthetic fun decodeJson$default ([BLcom/ycgc/lottori/core/ParseMode;ILjava/lang/Object;)Lcom/ycgc/lottori/core/ParseResult;
+}
+
+public final class com/ycgc/lottori/core/Severity : java/lang/Enum {
+	public static final field Error Lcom/ycgc/lottori/core/Severity;
+	public static final field Warning Lcom/ycgc/lottori/core/Severity;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ycgc/lottori/core/Severity;
+	public static fun values ()[Lcom/ycgc/lottori/core/Severity;
+}
+

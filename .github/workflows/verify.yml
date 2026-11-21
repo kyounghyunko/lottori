@@ -1,0 +1,73 @@
+name: Verify Lottori
+on: [push, pull_request]
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '21'}
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-37.0 build-tools;36.0.0
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew :lottori:jvmTest :sample:androidApp:assembleDebug
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 36
+          arch: x86_64
+          script: |
+            ANDROID_SERIAL=emulator-5554 ./gradlew :lottori:connectedAndroidDeviceTest :sample:androidApp:installDebug
+            python3 sample/scripts/android-smoke.py emulator-5554 sample/build/smoke/android
+      - if: failure()
+        run: java tools/frames/FrameArtifacts.java build/frame-differences lottori/build/test-results lottori/build/outputs/androidTest-results
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-verification
+          retention-days: 1
+          path: |
+            build/frame-differences
+            lottori/build/reports
+            lottori/build/outputs/androidTest-results
+            sample/build/smoke
+
+  ios:
+    needs: android
+    if: ${{ !cancelled() }}
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '21'}
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-37.0 build-tools;36.0.0
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew checkLegacyAbi :lottori:iosSimulatorArm64Test publishAllPublicationsToVerificationRepository
+      - run: ./gradlew -p verification/consumer assembleAndroidMain compileKotlinIosArm64 compileKotlinIosSimulatorArm64
+      - name: Exercise the sample
+        run: |
+          device=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for runtime,ds in json.load(sys.stdin)["devices"].items() if "iOS" in runtime for d in ds if "iPhone" in d["name"]))')
+          xcodebuild -project sample/iosApp/LottoriSample.xcodeproj -scheme LottoriSample -destination "platform=iOS Simulator,id=$device" -resultBundlePath build/sample.xcresult -parallel-testing-enabled NO test
+      - if: failure()
+        run: java tools/frames/FrameArtifacts.java build/frame-differences lottori/build/test-results lottori/build/outputs/androidTest-results
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-verification
+          retention-days: 1
+          path: |
+            build/frame-differences
+            build/sample.xcresult
+            lottori/build/reports

@@ -1,0 +1,282 @@
+{
+  "device": {
+    "model": "iPhone 17e",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-5",
+    "udid": "7732346C-2CF1-4127-BD95-1D9ADD10475C"
+  },
+  "tool": "malloc_history -allEvents -noContent",
+  "rounds": 5,
+  "compare": true,
+  "results": [
+    {
+      "round": 1,
+      "engine": "lottori",
+      "id": "333af7cf7ab546aaa6ca990437662409",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57997,
+      "mallocBytes": 37916034
+    },
+    {
+      "round": 1,
+      "engine": "compottie-lite",
+      "id": "8390806edc644a8da2faeccd93984920",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 58029,
+      "mallocBytes": 38948626
+    },
+    {
+      "round": 1,
+      "engine": "lottori",
+      "id": "e5115369dac148b0aea75ebf0c51fcd1",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 60033,
+      "mallocBytes": 38718858
+    },
+    {
+      "round": 1,
+      "engine": "compottie-lite",
+      "id": "73e7614aa1c64f9b86603e6309b127e3",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 61174,
+      "mallocBytes": 38640018
+    },
+    {
+      "round": 1,
+      "engine": "lottori",
+      "id": "c39ca3a211094c84bdcea9a361c33972",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71840,
+      "mallocBytes": 42824066
+    },
+    {
+      "round": 1,
+      "engine": "compottie-lite",
+      "id": "ebc2956438614514848421cf4c096863",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 88446,
+      "mallocBytes": 44947138
+    },
+    {
+      "round": 2,
+      "engine": "compottie-lite",
+      "id": "94b79052c2924ee8b2f9ca11f8a90539",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 61058,
+      "mallocBytes": 38080458
+    },
+    {
+      "round": 2,
+      "engine": "lottori",
+      "id": "9106e7e7c1d2418fb1cdcb7a41941356",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 59876,
+      "mallocBytes": 37962106
+    },
+    {
+      "round": 2,
+      "engine": "compottie-lite",
+      "id": "a7d8a6d28aa044a1bffc01472bb59815",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 88545,
+      "mallocBytes": 45256234
+    },
+    {
+      "round": 2,
+      "engine": "lottori",
+      "id": "4d32690fb1d347fcb71864b211a5b613",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71609,
+      "mallocBytes": 41738306
+    },
+    {
+      "round": 2,
+      "engine": "compottie-lite",
+      "id": "31bd4c8c7b63493187d5e25aa3a6219b",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57618,
+      "mallocBytes": 37301274
+    },
+    {
+      "round": 2,
+      "engine": "lottori",
+      "id": "2e7bdd99f4f84e50a70d8abf4d5e410c",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57951,
+      "mallocBytes": 37810674
+    },
+    {
+      "round": 3,
+      "engine": "lottori",
+      "id": "bd59a192a9f9416c8daf8479582dc896",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71777,
+      "mallocBytes": 42598954
+    },
+    {
+      "round": 3,
+      "engine": "compottie-lite",
+      "id": "8888c26fd36340d0b1139688a1404d6b",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 88375,
+      "mallocBytes": 44593162
+    },
+    {
+      "round": 3,
+      "engine": "lottori",
+      "id": "6793173b11bb42b2ab81a2f0d16f6b72",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57815,
+      "mallocBytes": 37357826
+    },
+    {
+      "round": 3,
+      "engine": "compottie-lite",
+      "id": "54465b0491244c8c814cbd761b544d0c",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57585,
+      "mallocBytes": 37158058
+    },
+    {
+      "round": 3,
+      "engine": "lottori",
+      "id": "9fa388b1e9cf41fe8796b730fe341890",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 60016,
+      "mallocBytes": 38602386
+    },
+    {
+      "round": 3,
+      "engine": "compottie-lite",
+      "id": "8237beaf69f54f12b045f1e4c6d95034",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 60977,
+      "mallocBytes": 37893298
+    },
+    {
+      "round": 4,
+      "engine": "compottie-lite",
+      "id": "20e8a23b65144db3b09b74d07c2ebc8b",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57669,
+      "mallocBytes": 37557074
+    },
+    {
+      "round": 4,
+      "engine": "lottori",
+      "id": "73a54c3270ca43d3a8e92e2a8f9f240b",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57886,
+      "mallocBytes": 37565586
+    },
+    {
+      "round": 4,
+      "engine": "compottie-lite",
+      "id": "a6ad252faf3a414597d9f8482d995ba3",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 61060,
+      "mallocBytes": 38112826
+    },
+    {
+      "round": 4,
+      "engine": "lottori",
+      "id": "e68e0050647a4b9fa9e59e3a272a5980",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 59882,
+      "mallocBytes": 38080466
+    },
+    {
+      "round": 4,
+      "engine": "compottie-lite",
+      "id": "ee95067e607243f9aaa42d6d5b6a5774",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 88190,
+      "mallocBytes": 43918642
+    },
+    {
+      "round": 4,
+      "engine": "lottori",
+      "id": "7242142f1ded479dbfa679ee440a48d7",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71886,
+      "mallocBytes": 43028706
+    },
+    {
+      "round": 5,
+      "engine": "lottori",
+      "id": "c5448a958b184161aebad3bc5208acba",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 59746,
+      "mallocBytes": 37507178
+    },
+    {
+      "round": 5,
+      "engine": "compottie-lite",
+      "id": "06e680a3eb514aba88e4420380fedf4a",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 61031,
+      "mallocBytes": 37867818
+    },
+    {
+      "round": 5,
+      "engine": "lottori",
+      "id": "6fea716bc95f4130abb84ed00bf825db",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71820,
+      "mallocBytes": 42758034
+    },
+    {
+      "round": 5,
+      "engine": "compottie-lite",
+      "id": "1087becceabb4f4ab1365376f083d43c",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 88232,
+      "mallocBytes": 44011618
+    },
+    {
+      "round": 5,
+      "engine": "lottori",
+      "id": "41e5785bbb7a4232a418ab24e0c98b6b",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57999,
+      "mallocBytes": 38032666
+    },
+    {
+      "round": 5,
+      "engine": "compottie-lite",
+      "id": "22dec8765fd849879d93ece271d2d442",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 58084,
+      "mallocBytes": 39189986
+    }
+  ]
+}

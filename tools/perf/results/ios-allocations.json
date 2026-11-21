@@ -1,0 +1,83 @@
+{
+  "device": {
+    "model": "iPhone 17e",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-5",
+    "udid": "7732346C-2CF1-4127-BD95-1D9ADD10475C"
+  },
+  "tool": "malloc_history -allEvents -noContent",
+  "rounds": 3,
+  "results": [
+    {
+      "round": 1,
+      "id": "92bb0cbd478745a1814904864249cc1a",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57892,
+      "mallocBytes": 37597178
+    },
+    {
+      "round": 1,
+      "id": "9a42a831b8f949249c34e0b7646e92df",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 59781,
+      "mallocBytes": 37599802
+    },
+    {
+      "round": 1,
+      "id": "f0f1b4dde28b462d9a6eb68fa636f675",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71821,
+      "mallocBytes": 42757834
+    },
+    {
+      "round": 2,
+      "id": "560fcbec29544eecb3936af9b656567d",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 60553,
+      "mallocBytes": 40833740
+    },
+    {
+      "round": 2,
+      "id": "35d3c2fe6e7640329552777c8c38d386",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71801,
+      "mallocBytes": 42513754
+    },
+    {
+      "round": 2,
+      "id": "757cfcd1e02e4468b62976f582b3741a",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57975,
+      "mallocBytes": 37884882
+    },
+    {
+      "round": 3,
+      "id": "7d9f9a7a94d8455cae3d27d2dbca6874",
+      "icons": 10,
+      "frames": 120,
+      "mallocEvents": 71909,
+      "mallocBytes": 43102434
+    },
+    {
+      "round": 3,
+      "id": "ea839e14cfae40c0b647a3ca9312263c",
+      "icons": 0,
+      "frames": 0,
+      "mallocEvents": 57900,
+      "mallocBytes": 37565538
+    },
+    {
+      "round": 3,
+      "id": "ea9db5584a2a4ca5a065f796fdd3cd7b",
+      "icons": 1,
+      "frames": 120,
+      "mallocEvents": 60024,
+      "mallocBytes": 38613706
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "device": {
+    "supportedAbis": [
+      "arm64-v8a"
+    ],
+    "supportedLocales": [
+      "en-US"
+    ],
+    "screenDensity": 420,
+    "sdkVersion": 36
+  },
+  "bundletool": "1.18.3",
+  "rows": [
+    {
+      "mode": "baseline",
+      "download_bytes": 554741,
+      "bundle_bytes": 1546308,
+      "delta_from_base": 0,
+      "delta_from_player": -53684
+    },
+    {
+      "mode": "player",
+      "download_bytes": 608425,
+      "bundle_bytes": 1675977,
+      "delta_from_base": 53684,
+      "delta_from_player": 0
+    },
+    {
+      "mode": "json",
+      "download_bytes": 608756,
+      "bundle_bytes": 1676562,
+      "delta_from_base": 54015,
+      "delta_from_player": 331
+    },
+    {
+      "mode": "dotlottie",
+      "download_bytes": 608950,
+      "bundle_bytes": 1676751,
+      "delta_from_base": 54209,
+      "delta_from_player": 525
+    }
+  ]
+}
