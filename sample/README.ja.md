@@ -4,7 +4,7 @@
 
 サンプルアプリを開くと、`paper-flight.json` から描画した **Paper flight** が 5.2 秒周期で繰り返し再生されます。kyounghyunko が ChatGPT を使ってこのアニメーションを制作しました。 [折り鶴の JSON](../docs/assets/paper-flight.json) · [Android エミュレータ (MP4)](../docs/assets/paper-flight-android.mp4) · [iOS シミュレータ (MP4)](../docs/assets/paper-flight-ios.mp4)
 
-Android と iOS のアプリは、共通の Kotlin 画面で同じサンプルファイルを開きます。**Moving circle** を選んで **50%** をタップすると、プレビューの中央に赤い円が表示されます。**Play** と **Pause** で再生と一時停止を切り替えられます。**Trim path** を選ぶと、代替アイコンと未対応ノードの JSON パスが表示されます。**Damaged JSON** と **ZIP** では、それぞれ異なる入力エラーを確認できます。[サンプルファイル](../fixtures)
+ビルド時にサンプルの JSON が `commonMain` の Compose Resources に組み込まれます。Android と iOS の共通画面は `files/paper-flight.json` から折り鶴を読み込みます。**Moving circle** を選んで **50%** をタップすると、プレビューの中央に赤い円が表示されます。**Play** と **Pause** で再生と一時停止を切り替えられます。**Trim path** を選ぶと、代替アイコンと未対応ノードの JSON パスが表示されます。**Damaged JSON** と **ZIP** では、それぞれ異なる入力エラーを確認できます。[サンプルファイル](../fixtures)
 
 ## Android で実行する
 

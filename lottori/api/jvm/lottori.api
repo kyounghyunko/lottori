@@ -42,6 +42,7 @@ public final class com/ycgc/lottori/LottoriLoadState$Ready : com/ycgc/lottori/Lo
 
 public final class com/ycgc/lottori/LottoriLoadStateKt {
 	public static final fun rememberLottoriComposition (Ljava/lang/Object;Lcom/ycgc/lottori/core/ParseMode;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;II)Lcom/ycgc/lottori/LottoriLoadState;
+	public static final fun rememberLottoriComposition (Ljava/lang/String;Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lcom/ycgc/lottori/core/ParseMode;Landroidx/compose/runtime/Composer;II)Lcom/ycgc/lottori/LottoriLoadState;
 }
 
 public final class com/ycgc/lottori/LottoriPlaybackKt {

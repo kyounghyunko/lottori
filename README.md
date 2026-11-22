@@ -44,12 +44,13 @@ Version `0.1.0-SNAPSHOT` is for local development. If your app and the Lottori c
 includeBuild("../lottori")
 ```
 
-In the `build.gradle.kts` of the shared module that applies Kotlin Multiplatform and the Compose Compiler plugin (`org.jetbrains.kotlin.plugin.compose`), add the player dependency.
+In the shared module, apply the Kotlin Multiplatform, Compose Compiler (`org.jetbrains.kotlin.plugin.compose`) and Compose Multiplatform (`org.jetbrains.compose`) plugins. Add the player and Compose Resources dependencies in `build.gradle.kts`.
 
 ```kotlin
 kotlin {
     sourceSets.commonMain.dependencies {
         implementation("com.ycgc.lottori:lottori:0.1.0-SNAPSHOT")
+        implementation("org.jetbrains.compose.components:components-resources:1.12.0")
     }
 }
 ```
@@ -58,10 +59,7 @@ The player includes the JSON decoder. To inspect a file before playback, call `c
 
 ### 2. Load a JSON file and display a frame
 
-Bundle the fixture with both apps. Pass a lambda that reads the file to the shared function's `readBytes` parameter. [Paper flight JSON](docs/assets/paper-flight.json)
-
-- In the **Android** app, put the file at `src/main/assets/paper-flight.json` in the app module. In an activity, pass `readBytes = { assets.open("paper-flight.json").use { it.readBytes() } }`. [Android sample loader](sample/androidApp/src/main/java/com/ycgc/lottori/sample/MainActivity.kt)
-- For **iOS**, add the resource to the Xcode target so the app bundle contains `Fixtures/paper-flight.json`. The sample loader looks up the file in the `Fixtures` directory of `NSBundle.mainBundle` and returns a `ByteArray`. [iOS sample loader](sample/src/iosMain/kotlin/com/ycgc/lottori/sample/MainViewController.kt)
+Place `paper-flight.json` in `src/commonMain/composeResources/files/` in the shared module. Android and iOS use the same file. Import the `Res` class generated for that module. For an Android KMP library target, enable Android resources with `kotlin { android { androidResources.enable = true } }`. [Paper flight JSON](docs/assets/paper-flight.json) · [Compose Resources setup](https://kotlinlang.org/docs/multiplatform/compose-multiplatform-resources-setup.html)
 
 ```kotlin
 import androidx.compose.runtime.Composable
@@ -70,13 +68,11 @@ import com.ycgc.lottori.*
 
 @Composable
 fun PaperFlight(
-    assetVersion: String,
-    readBytes: suspend () -> ByteArray,
     progress: () -> Float,
     fallback: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    when (val state = rememberLottoriComposition(assetVersion, loader = readBytes)) {
+    when (val state = rememberLottoriComposition("files/paper-flight.json", Res::readBytes)) {
         LottoriLoadState.Loading -> Unit
         is LottoriLoadState.Failed -> fallback()
         is LottoriLoadState.Ready -> LottoriAnimation(
@@ -91,7 +87,7 @@ fun PaperFlight(
 
 Call `PaperFlight` with `progress = { 0.5f }` to show the paper crane halfway through its flight. To drive the animation from a gesture, return its progress between 0 and 1 from the same lambda. Supply a static icon as `fallback`. On failure, `state.diagnostics` explains why loading failed.
 
-Change `assetVersion` when the file contents change. The loader cancels the previous request and decodes the new bytes. Multiple players can share one loaded `composition`.
+The full resource path identifies the animation. To reload new bytes at the same path, pass an additional `key`, for example `rememberLottoriComposition(path, Res::readBytes, key = revision)`. Multiple players can share a loaded `composition`.
 
 ### 3. Play or pause an animation
 

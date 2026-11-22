@@ -4,7 +4,7 @@
 
 The sample opens with **Paper flight**, a 5.2-second loop rendered from `paper-flight.json`. kyounghyunko created the animation using ChatGPT. [Paper flight JSON](../docs/assets/paper-flight.json) · [Android emulator (MP4)](../docs/assets/paper-flight-android.mp4) · [iOS simulator (MP4)](../docs/assets/paper-flight-ios.mp4)
 
-The Android and iOS apps open the same fixtures in a shared Kotlin screen. Select **Moving circle** and tap **50%** to center the red circle in the preview. Use **Play** and **Pause** to control playback. Select **Trim path** to see the static fallback icon and the JSON path of the unsupported node. **Damaged JSON** and **ZIP** show distinct input errors. [Sample fixtures](../fixtures)
+The sample build bundles the JSON fixtures as `commonMain` Compose Resources. The shared Android and iOS screen opens the crane at `files/paper-flight.json`. Select **Moving circle** and tap **50%** to center the red circle in the preview. Use **Play** and **Pause** to control playback. Select **Trim path** to see the static fallback icon and the JSON path of the unsupported node. **Damaged JSON** and **ZIP** show distinct input errors. [Sample fixtures](../fixtures)
 
 ## Run on Android
 

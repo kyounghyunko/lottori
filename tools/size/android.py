@@ -45,7 +45,8 @@ if __name__ == "__main__":
         with zipfile.ZipFile(bundle) as z:
             assets = {n for n in z.namelist() if n.startswith("base/assets/") and
                       n.rsplit("/", 1)[1].endswith((".json", ".lottie"))}
-            expected = {"json": "base/assets/input.json", "dotlottie": "base/assets/input.lottie"}.get(mode)
+            resource_dir = "base/assets/composeResources/com.ycgc.lottori.sample.resources/files"
+            expected = {"json": f"{resource_dir}/input.json", "dotlottie": f"{resource_dir}/input.lottie"}.get(mode)
             assert assets == ({expected} if expected else set()), (mode, assets)
             if expected:
                 assert z.read(expected) == (fixture if mode == "json" else container.read_bytes())

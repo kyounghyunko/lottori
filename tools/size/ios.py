@@ -37,11 +37,12 @@ if __name__ == "__main__":
                         *[f"{k}={v}" for k, v in setting.items()], *signing, "ARCHS=arm64", "archive"],
                        cwd=root, check=True, env={**os.environ, **setting})
         app, = (archive / "Products/Applications").glob("*.app")
-        assets = {p.name for p in (app / "Fixtures").glob("*") if p.is_file()}
+        resource_dir = app / "compose-resources/composeResources/com.ycgc.lottori.sample.resources/files"
+        assets = {p.name for p in resource_dir.glob("*") if p.is_file()}
         expected = {"json": "input.json", "dotlottie": "input.lottie"}.get(name)
         assert assets == ({expected} if expected else set()), (name, assets)
         if expected:
-            assert (app / "Fixtures" / expected).read_bytes() == (fixture if name == "json" else container.read_bytes())
+            assert (resource_dir / expected).read_bytes() == (fixture if name == "json" else container.read_bytes())
         framework = app / "Frameworks/LottoriSampleKit.framework/LottoriSampleKit"
         digest = hashlib.sha256(framework.read_bytes()).hexdigest()
         if name == "player":

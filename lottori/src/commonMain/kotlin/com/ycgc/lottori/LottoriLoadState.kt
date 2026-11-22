@@ -22,6 +22,18 @@ sealed interface LottoriLoadState {
     data class Failed(val diagnostics: List<Diagnostic>) : LottoriLoadState
 }
 
+/** Reads [path] with the app's resource reader. A change to [path], [key], or [mode] reloads the file. */
+@Composable
+fun rememberLottoriComposition(
+    path: String,
+    readBytes: suspend (String) -> ByteArray,
+    key: Any? = null,
+    mode: ParseMode = ParseMode.Strict,
+): LottoriLoadState {
+    val resourceKey = if (key == null) path else path to key
+    return rememberLottoriComposition(resourceKey, mode) { readBytes(path) }
+}
+
 /** Reloads when [key] or [mode] changes. Include the resource version in [key] when its contents change. */
 @Composable
 fun rememberLottoriComposition(

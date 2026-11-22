@@ -28,16 +28,10 @@ import com.ycgc.lottori.LottoriLoadState
 import com.ycgc.lottori.rememberLottoriComposition
 import com.ycgc.lottori.rememberLottoriPlayback
 
-private enum class Input(val label: String, val file: String? = null) {
-    PaperFlight("Paper flight", "paper-flight.json"),
-    Moving("Moving circle", "moving-circle.json"), Static("Static circle", "static-circle.json"),
-    Trim("Trim path", "trim-path.json"), Broken("Damaged JSON"), Archive("ZIP");
-
-    fun read(loader: (String) -> ByteArray): ByteArray = when (this) {
-        Broken -> "{".encodeToByteArray()
-        Archive -> byteArrayOf(0x50, 0x4B, 0x05, 0x06) + ByteArray(18)
-        else -> loader(requireNotNull(file))
-    }
+private enum class Input(val label: String, val path: String? = null) {
+    PaperFlight("Paper flight", "files/paper-flight.json"),
+    Moving("Moving circle", "files/moving-circle.json"), Static("Static circle", "files/static-circle.json"),
+    Trim("Trim path", "files/trim-path.json"), Broken("Damaged JSON"), Archive("ZIP")
 }
 
 private sealed interface Position {
@@ -52,12 +46,16 @@ private val accent = Color(0xff244b95)
 private val corner = RoundedCornerShape(10.dp)
 
 @Composable
-fun SampleScreen(readBytes: (String) -> ByteArray) {
+internal fun SampleScreen(readBytes: suspend (String) -> ByteArray) {
     var input by remember { mutableStateOf(Input.PaperFlight) }
     var position by remember(input) {
         mutableStateOf<Position>(if (input == Input.PaperFlight) Position.Loop(true) else Position.Fixed(0))
     }
-    val result = rememberLottoriComposition(key = input) { input.read(readBytes) }
+    val result = when (input) {
+        Input.Broken -> rememberLottoriComposition(key = input) { "{".encodeToByteArray() }
+        Input.Archive -> rememberLottoriComposition(key = input) { byteArrayOf(0x50, 0x4B, 0x05, 0x06) + ByteArray(18) }
+        else -> rememberLottoriComposition(requireNotNull(input.path), readBytes)
+    }
     Column(Modifier.fillMaxSize().background(paper).safeContentPadding().verticalScroll(rememberScrollState())
         .padding(horizontal = 18.dp, vertical = 20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         BasicText("Lottori", style = TextStyle(fontSize = 30.sp, fontWeight = FontWeight.Bold, color = ink))

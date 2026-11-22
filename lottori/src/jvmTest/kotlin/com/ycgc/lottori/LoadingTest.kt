@@ -10,6 +10,7 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -19,6 +20,37 @@ import kotlin.time.TimeSource
 
 @OptIn(ExperimentalComposeUiApi::class)
 class LoadingTest {
+    @Test
+    fun resourceReloadsWhenItsFullPathOrExplicitKeyChanges() {
+        val home = "files/home/icon.json"
+        val profile = "files/profile/icon.json"
+        val path = mutableStateOf(home)
+        val revision = mutableStateOf<Int?>(null)
+        val requests = CopyOnWriteArrayList<String>()
+        val readBytes: suspend (String) -> ByteArray = { requested ->
+            requests.add(requested)
+            """{"w":${requests.size},"h":1,"ip":0,"op":1,"fr":1,"layers":[]}""".encodeToByteArray()
+        }
+        var observed: LottoriLoadState = LottoriLoadState.Loading
+        val scene = ImageComposeScene(100, 40, Density(1f)) {
+            val state = rememberLottoriComposition(path.value, readBytes, key = revision.value)
+            SideEffect { observed = state }
+        }
+        fun awaitWidth(width: Int) = scene.until { (observed as? LottoriLoadState.Ready)?.composition?.width == width }
+        try {
+            awaitWidth(1)
+            path.value = profile
+            awaitWidth(2)
+            revision.value = 1
+            awaitWidth(3)
+            path.value = home
+            awaitWidth(4)
+            assertEquals(listOf(home, profile, profile, home), requests.toList())
+        } finally {
+            scene.close()
+        }
+    }
+
     @Test
     fun replacingTheKeyCancelsTheOldRequestAndKeepsTheNewResult() {
         val key = mutableStateOf("old")

@@ -44,14 +44,14 @@ private class Samples(val count: Int) {
 }
 
 @Composable
-fun SampleScreen(readBytes: (String) -> ByteArray) {
+internal fun SampleScreen(readBytes: suspend (String) -> ByteArray) {
     val run = currentRun()
     require(run.icons in listOf(0, 1, 10))
     val samples = remember(run) { Samples(maxOf(1, run.icons)) }
     var composition by remember(run) { mutableStateOf<PerfAnimation?>(null) }
     LaunchedEffect(run) {
         composition = withContext(Dispatchers.Default) {
-            val bytes = readBytes("input.json")
+            val bytes = readBytes("files/input.json")
             samples.received = samples.now()
             val parsed = decodeAnimation(run.engine, bytes)
             samples.decoded = samples.now() - samples.received

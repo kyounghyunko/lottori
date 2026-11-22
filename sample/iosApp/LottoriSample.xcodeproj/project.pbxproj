@@ -70,7 +70,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0254BB8FFF23AD6E79A7B8E2 /* Build configuration list for PBXNativeTarget "LottoriSample" */;
 			buildPhases = (
-				05FEADE870010C085E93CE88 /* Build Kotlin framework and copy sample fixtures */,
+				2FB9AE3011E0A4685ED33A9E /* Build Kotlin framework and Compose resources */,
 				355A6D054F3F067BB891278F /* Sources */,
 			);
 			buildRules = (
@@ -137,7 +137,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		05FEADE870010C085E93CE88 /* Build Kotlin framework and copy sample fixtures */ = {
+		2FB9AE3011E0A4685ED33A9E /* Build Kotlin framework and Compose resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -147,14 +147,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Build Kotlin framework and copy sample fixtures";
+			name = "Build Kotlin framework and Compose resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -eu\ncd \"$SRCROOT/../..\"\n./gradlew :sample:embedAndSignAppleFrameworkForXcode :sample:prepareSampleAssets\nmkdir -p \"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/Fixtures\"\nassets=\"sample/build/sample-assets/${ORG_GRADLE_PROJECT_lottoriSampleMode:-demo}\"\nmkdir -p \"$assets\"\n/usr/bin/rsync -a --delete \"${assets}/\" \"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/Fixtures/\"\n";
+			shellScript = "set -eu\ncd \"$SRCROOT/../..\"\n./gradlew :sample:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -190,6 +190,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphonesimulator*]" = arm64;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -277,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphonesimulator*]" = arm64;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

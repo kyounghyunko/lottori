@@ -4,7 +4,7 @@
 
 샘플 앱을 열면 `paper-flight.json`으로 그린 **Paper flight**가 5.2초 주기로 반복 재생됩니다. kyounghyunko가 ChatGPT를 사용해 이 애니메이션을 만들었습니다. [종이학 예제 JSON](../docs/assets/paper-flight.json) · [Android 에뮬레이터 (MP4)](../docs/assets/paper-flight-android.mp4) · [iOS 시뮬레이터 (MP4)](../docs/assets/paper-flight-ios.mp4)
 
-Android와 iOS 앱은 같은 Kotlin 화면에서 [원본 예제 파일](../fixtures)을 엽니다. **Moving circle**에서 **50%**를 누르면 빨간 원이 미리보기 중앙에 나타납니다. **Play**와 **Pause**는 프레임 시계를 제어합니다. **Trim path**를 선택하면 앱에서 제공하는 정적 아이콘과 미지원 노드의 JSON 경로가 표시됩니다. **Damaged JSON**과 **ZIP**은 서로 다른 입력 오류를 보여줍니다.
+샘플을 빌드하면 [예제 JSON](../fixtures)이 `commonMain`의 Compose Resources에 포함됩니다. Android와 iOS의 공통 화면은 `files/paper-flight.json`에서 종이학을 읽습니다. **Moving circle**에서 **50%**를 누르면 빨간 원이 미리보기 중앙에 나타납니다. **Play**와 **Pause**는 프레임 시계를 제어합니다. **Trim path**를 선택하면 앱에서 제공하는 정적 아이콘과 미지원 노드의 JSON 경로가 표시됩니다. **Damaged JSON**과 **ZIP**은 서로 다른 입력 오류를 보여줍니다.
 
 ## Android에서 실행
 

@@ -21,11 +21,7 @@ android {
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
     }
     buildFeatures { compose = true }
-    val mode = providers.gradleProperty("lottoriSampleMode").orElse("demo").get()
-    sourceSets["main"].assets.directories.add(project(":sample").layout.buildDirectory.dir("sample-assets/$mode").get().asFile.absolutePath)
 }
-
-tasks.named("preBuild") { dependsOn(":sample:prepareSampleAssets") }
 
 dependencies {
     implementation(project(":sample"))

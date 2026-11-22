@@ -9,10 +9,10 @@ import com.ycgc.lottori.LottoriLoadState
 import com.ycgc.lottori.rememberLottoriComposition
 
 @Composable
-fun SampleScreen(readBytes: (String) -> ByteArray) {
+internal fun SampleScreen(readBytes: suspend (String) -> ByteArray) {
     Box(Modifier.fillMaxSize()) {
         val state = rememberLottoriComposition("input") {
-            runCatching { readBytes("input.json") }.getOrElse { readBytes("input.lottie") }
+            runCatching { readBytes("files/input.json") }.getOrElse { readBytes("files/input.lottie") }
         }
         if (state is LottoriLoadState.Ready) LottoriAnimation(state.composition)
     }

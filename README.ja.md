@@ -44,12 +44,13 @@ Lottori は、Android と iOS の Compose 画面に 2D Lottie アイコンを描
 includeBuild("../lottori")
 ```
 
-Kotlin Multiplatform と Compose Compiler プラグイン（`org.jetbrains.kotlin.plugin.compose`）を適用している共通モジュールの `build.gradle.kts` に、プレイヤーの依存関係を追加してください。
+共通モジュールに Kotlin Multiplatform、Compose Compiler（`org.jetbrains.kotlin.plugin.compose`）、Compose Multiplatform（`org.jetbrains.compose`）のプラグインを適用し、`build.gradle.kts` にプレイヤーと Compose Resources の依存関係を追加します。
 
 ```kotlin
 kotlin {
     sourceSets.commonMain.dependencies {
         implementation("com.ycgc.lottori:lottori:0.1.0-SNAPSHOT")
+        implementation("org.jetbrains.compose.components:components-resources:1.12.0")
     }
 }
 ```
@@ -58,10 +59,7 @@ kotlin {
 
 ### 2. JSON を読み込み、指定したフレームを表示する
 
-両方のアプリにサンプルファイルを同梱し、次の共通関数の `readBytes` にファイルを読み込むラムダを渡してください。[折り鶴の JSON](docs/assets/paper-flight.json)
-
-- **Android** では、アプリモジュールの `src/main/assets/paper-flight.json` にファイルを置きます。Activity からは `readBytes = { assets.open("paper-flight.json").use { it.readBytes() } }` として渡せます。[Android の読み込み例](sample/androidApp/src/main/java/com/ycgc/lottori/sample/MainActivity.kt)
-- **iOS** では、アプリバンドルに `Fixtures/paper-flight.json` が含まれるように、Xcode ターゲットにリソースを追加します。サンプルは `NSBundle.mainBundle` の `Fixtures` ディレクトリからファイルを探し、`ByteArray` を返します。[iOS の読み込み例](sample/src/iosMain/kotlin/com/ycgc/lottori/sample/MainViewController.kt)
+共通モジュールの `src/commonMain/composeResources/files/` に `paper-flight.json` を配置します。Android と iOS は同じファイルを使用します。そのモジュールが生成した `Res` をインポートしてください。Android KMP ライブラリのターゲットでは `kotlin { android { androidResources.enable = true } }` でリソースを有効にします。[折り鶴の JSON](docs/assets/paper-flight.json) · [Compose Resources の設定](https://kotlinlang.org/docs/multiplatform/compose-multiplatform-resources-setup.html)
 
 ```kotlin
 import androidx.compose.runtime.Composable
@@ -70,13 +68,11 @@ import com.ycgc.lottori.*
 
 @Composable
 fun PaperFlight(
-    assetVersion: String,
-    readBytes: suspend () -> ByteArray,
     progress: () -> Float,
     fallback: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    when (val state = rememberLottoriComposition(assetVersion, loader = readBytes)) {
+    when (val state = rememberLottoriComposition("files/paper-flight.json", Res::readBytes)) {
         LottoriLoadState.Loading -> Unit
         is LottoriLoadState.Failed -> fallback()
         is LottoriLoadState.Ready -> LottoriAnimation(
@@ -91,7 +87,7 @@ fun PaperFlight(
 
 `PaperFlight` に `progress = { 0.5f }` を渡すと、折り鶴の飛行アニメーションの中間フレームが表示されます。ジェスチャーで操作する場合は、同じラムダから 0〜1 の進行度を返してください。`fallback` には読み込み失敗時に表示する静的アイコンを指定します。失敗の原因は `state.diagnostics` で確認できます。
 
-ファイルの内容を変更したら `assetVersion` も変更してください。ローダーは以前のリクエストをキャンセルし、新しいバイト列をデコードします。読み込んだ `composition` は複数のプレイヤーで共有できます。
+リソースのフルパスがアニメーションを識別します。同じパスの内容を再読み込みするには、`rememberLottoriComposition(path, Res::readBytes, key = revision)` のように `key` を追加します。読み込んだ `composition` は複数のプレイヤーで共有できます。
 
 ### 3. 自動再生と一時停止を切り替える
 

@@ -44,12 +44,13 @@ Lottori는 Android와 iOS의 Compose 화면에서 2D Lottie 아이콘을 그리�
 includeBuild("../lottori")
 ```
 
-Kotlin Multiplatform과 Compose Compiler 플러그인(`org.jetbrains.kotlin.plugin.compose`)을 사용하는 공통 모듈의 `build.gradle.kts`에 플레이어 의존성을 추가하세요.
+공통 모듈에 Kotlin Multiplatform, Compose Compiler(`org.jetbrains.kotlin.plugin.compose`), Compose Multiplatform(`org.jetbrains.compose`) 플러그인을 적용하고, `build.gradle.kts`에 플레이어와 Compose Resources 의존성을 추가하세요.
 
 ```kotlin
 kotlin {
     sourceSets.commonMain.dependencies {
         implementation("com.ycgc.lottori:lottori:0.1.0-SNAPSHOT")
+        implementation("org.jetbrains.compose.components:components-resources:1.12.0")
     }
 }
 ```
@@ -58,10 +59,7 @@ kotlin {
 
 ### 2. JSON을 읽고 원하는 프레임 표시하기
 
-예제 파일을 두 앱에 넣고 아래 공통 함수의 `readBytes`에 파일을 읽는 람다를 전달하세요. [종이학 예제 JSON](docs/assets/paper-flight.json)
-
-- **Android** 앱 모듈의 `src/main/assets/paper-flight.json`에 파일을 넣으세요. Activity에서는 `readBytes = { assets.open("paper-flight.json").use { it.readBytes() } }`로 읽을 수 있습니다. [Android 샘플 로더](sample/androidApp/src/main/java/com/ycgc/lottori/sample/MainActivity.kt)
-- **iOS** 앱 번들 안에 `Fixtures/paper-flight.json`이 포함되도록 Xcode 타깃에 리소스를 추가하세요. 샘플 로더는 `NSBundle.mainBundle`의 `Fixtures`에서 파일을 찾아 `ByteArray`로 반환합니다. [iOS 샘플 로더](sample/src/iosMain/kotlin/com/ycgc/lottori/sample/MainViewController.kt)
+공통 모듈의 `src/commonMain/composeResources/files/`에 `paper-flight.json`을 넣으세요. Android와 iOS가 같은 파일을 사용합니다. 코드에서 이 모듈이 생성한 `Res`를 import하세요. Android KMP 라이브러리 타깃은 `kotlin { android { androidResources.enable = true } }`로 리소스를 활성화하세요. [종이학 예제 JSON](docs/assets/paper-flight.json) · [Compose Resources 설정](https://kotlinlang.org/docs/multiplatform/compose-multiplatform-resources-setup.html)
 
 ```kotlin
 import androidx.compose.runtime.Composable
@@ -70,13 +68,11 @@ import com.ycgc.lottori.*
 
 @Composable
 fun PaperFlight(
-    assetVersion: String,
-    readBytes: suspend () -> ByteArray,
     progress: () -> Float,
     fallback: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    when (val state = rememberLottoriComposition(assetVersion, loader = readBytes)) {
+    when (val state = rememberLottoriComposition("files/paper-flight.json", Res::readBytes)) {
         LottoriLoadState.Loading -> Unit
         is LottoriLoadState.Failed -> fallback()
         is LottoriLoadState.Ready -> LottoriAnimation(
@@ -91,7 +87,7 @@ fun PaperFlight(
 
 화면에서 `PaperFlight`을 호출할 때 `progress = { 0.5f }`를 전달하면 종이학의 비행 장면을 중간 프레임에서 볼 수 있습니다. 제스처로 조작하려면 같은 자리에 0부터 1 사이의 진행률을 반환하는 람다를 전달하세요. `fallback`에는 로딩 실패 시 표시할 정적 아이콘을 넣으세요. 실패 원인은 `state.diagnostics`에서 확인할 수 있습니다.
 
-파일 내용이 바뀌면 `assetVersion`도 바꾸세요. 로더는 이전 요청을 취소하고 새 바이트를 디코딩합니다. 한 번 읽은 `composition`은 여러 플레이어에서 공유할 수 있습니다.
+전체 리소스 경로가 애니메이션을 식별합니다. 같은 경로의 파일 내용을 다시 읽으려면 `rememberLottoriComposition(path, Res::readBytes, key = revision)`처럼 `key`를 추가하세요. 한 번 읽은 `composition`은 여러 플레이어에서 공유할 수 있습니다.
 
 ### 3. 자동 재생하거나 일시정지하기
 

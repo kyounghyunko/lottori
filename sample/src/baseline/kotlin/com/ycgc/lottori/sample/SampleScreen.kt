@@ -6,6 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SampleScreen(readBytes: (String) -> ByteArray) {
+internal fun SampleScreen(readBytes: suspend (String) -> ByteArray) {
     Box(Modifier.fillMaxSize())
 }
